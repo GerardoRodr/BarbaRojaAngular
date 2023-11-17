@@ -25,9 +25,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/sandstone_bootstrap.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/bootstrap.bundle.min.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -96,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "c7b9ab6f-a187-48f0-a5c8-88afa9e907ba"
   }
 }
