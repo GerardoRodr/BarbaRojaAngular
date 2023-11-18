@@ -26,7 +26,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/sandstone_bootstrap.css"
+              "src/assets/bootstrap.min.css"
             ],
             "scripts": [
               "src/assets/bootstrap.bundle.min.js"
