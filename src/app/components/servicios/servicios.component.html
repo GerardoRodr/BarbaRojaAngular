@@ -1,0 +1,54 @@
+  <div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <!-- ITEM SERVICIO -->
+      @defer {
+        @for (s of servicios; track s.id) {
+          <div class="col">
+            <div class="card mb-3">
+              <h4 class="card-header"> {{ s.nombreServicio }}</h4>
+              <img src="{{ s.rutaImagen }}" class="d-block user-select-none" alt="Imagen del Servicio">
+              <div class="card-body">
+                <p class="card-text">{{ s.descripcion }} </p>
+                <p class="card-text">Precio: S/{{ s.precio }}</p>
+                <div class="d-grid gap-2">
+                  <button class="btn btn-success" type="button">Reservar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      } @placeholder {
+          @for (item of servicios; track $index) {
+            <div class="col">
+              <div class="card mb-3">
+                <h4 class="card-header">...</h4>
+                <i class="bi bi-card-image text-center" style="font-size: 10rem;"></i>
+                <div class="card-body">
+                  <p class="card-text">...</p>
+                  <p class="card-text">Precio: ...</p>
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-success" type="button">Reservar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+      } @loading {
+          @for (item of servicios; track $index) {
+            <div class="col">
+              <div class="card mb-3">
+                <h4 class="card-header">...</h4>
+                <i class="bi bi-card-image text-center" style="font-size: 10rem;"></i>
+                <div class="card-body">
+                  <p class="card-text">...</p>
+                  <p class="card-text">Precio: ...</p>
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-success" type="button">Reservar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+      }
+    </div>
+  </div>

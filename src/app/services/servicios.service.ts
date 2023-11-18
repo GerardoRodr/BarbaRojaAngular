@@ -1,13 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiciosService {
+  private apiUrl = 'https://apibarbaroja.azurewebsites.net/api/v1/';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  crearServicio(servicio: object) {
-    
+  getServicios() {
+    return this.http.get(`${this.apiUrl}/servicios`)
   }
 }
