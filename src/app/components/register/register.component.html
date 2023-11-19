@@ -1,1 +1,64 @@
-<p>register works!</p>
+<style>
+    @media (max-width: 576px) {
+      .img-fluid {
+        width: 100%; /* La imagen se ajustará al 100% del ancho del contenedor */
+        height: auto; /* La altura se ajustará automáticamente según el ancho */
+      }
+
+      .offset-xl-1 {
+        margin-left: 0;
+      }
+    }
+  </style>
+<section class="p-lg-5 m-lg-5 p-sm-3 m-sm-3 p-md-4 m-md-4">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="/assets/undraw_sign_up_n6im.svg" class="img-fluid" alt="Sample image">
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+          <form (ngSubmit)="registrar()">
+
+            <!-- Nombre input -->
+            <div class="form-outline mb-4">
+                <input [(ngModel)]="cliente.nombreCliente" name="nombreCliente" type="email" class="form-control form-control-lg" placeholder="Ingrese su correo electrónico" required/>
+                <label class="form-label" for="form3Example3">Nombre</label>
+              </div>
+
+            <!-- Apellidos input -->
+            <div class="form-outline mb-4">
+                <input [(ngModel)]="cliente.apellidoCliente" name="apellidoCliente" type="email" class="form-control form-control-lg" placeholder="Ingrese su correo electrónico" required/>
+                <label class="form-label" for="form3Example3">Apellidos</label>
+              </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input [(ngModel)]="cliente.correo" name="correo" type="email" class="form-control form-control-lg" placeholder="Ingrese su correo electrónico" required/>
+              <label class="form-label" for="form3Example3">Correo</label>
+            </div>
+  
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <input [(ngModel)]="cliente.pass" type="password" name="pass" class="form-control form-control-lg" placeholder="Ingrese su contraseña" required/>
+              <label class="form-label" for="form3Example4">Contraseña</label>
+            </div>
+
+            <!-- Telefono input -->
+            <div class="form-outline mb-3">
+              <input [(ngModel)]="cliente.telefono" type="password" name="telefono" class="form-control form-control-lg" placeholder="Ingrese su contraseña" required/>
+              <label class="form-label" for="form3Example4">Telefono</label>
+            </div>
+  
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-primary btn-lg" [disabled]="loading" style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                Registrar
+              </button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">¿Ya tienes una cuenta? <a href="/login" class="link-danger">Inicia Sesion</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </section>

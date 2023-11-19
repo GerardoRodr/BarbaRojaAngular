@@ -1,7 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ServiciosService } from '../../services/servicios.service';
-import { Servicio } from '../../services/servicio.model';
+import { Servicio } from '../../services/models/servicio.model';
 
 @Component({
   selector: 'app-servicios',

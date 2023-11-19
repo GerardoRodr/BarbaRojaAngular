@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'https://apibarbaroja.azurewebsites.net/api/v1/clientes';
+  private apiUrl = 'http://localhost:8080/api/v1/clientes';
 
   constructor(private http: HttpClient) { }
 
