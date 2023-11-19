@@ -32,7 +32,5 @@ export class RegisterComponent {
         console.error(err)
       }
     );
-
   }
-
 }
