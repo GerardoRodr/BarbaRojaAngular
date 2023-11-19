@@ -6,11 +6,12 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule], //SOLO HTML / COMPONENTES
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+
+export class LoginComponent { // LA LOGICA DEL COMPONENTE
   credentials = { correo: '', pass: '' };
   errorMessage: string = '';
   successMessage: string = '';
@@ -30,11 +31,11 @@ export class LoginComponent {
         this.cliente = response.cliente;
         this.loading = false;
       },
-      (error) => {
+      (siFalla) => {
         this.loading = false;
-        if (error.status === 401) {
-          console.log(error.error);
-          this.errorMessage = error.error.mensajeError;
+        if (siFalla.status === 401) {
+          console.log(siFalla.error);
+          this.errorMessage = siFalla.error.mensajeError;
         } else {
           this.errorMessage = 'Error en el inicio de sesión.';
         }

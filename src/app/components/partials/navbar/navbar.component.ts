@@ -9,6 +9,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
+
 export class NavbarComponent {
-  isLogged = false;
+  isLogged: Boolean = false;
 }

@@ -17,16 +17,25 @@
           <img src="/assets/undraw_sign_up_n6im.svg" class="img-fluid" alt="Sample image">
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          @if (errorMessage.length != 0) {
+            <!-- ALERTA -->
+            <div class="alert alert-dismissible alert-warning">
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              <h4 class="alert-heading">Alerta!</h4>
+              <p class="mb-0">{{ errorMessage }}. Verifique sus datos por favor.</p>
+            </div>
+          }
+
           <form (ngSubmit)="login()">
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <input [(ngModel)]="credentials.correo" name="correo" type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Ingrese su correo electrónico" />
+              <input [(ngModel)]="credentials.correo" name="correo" type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Ingrese su correo electrónico" required/>
               <label class="form-label" for="form3Example3">Correo</label>
             </div>
   
             <!-- Password input -->
             <div class="form-outline mb-3">
-              <input [(ngModel)]="credentials.pass" type="password" name="pass" id="form3Example4" class="form-control form-control-lg" placeholder="Ingrese su contraseña" />
+              <input [(ngModel)]="credentials.pass" type="password" name="pass" id="form3Example4" class="form-control form-control-lg" placeholder="Ingrese su contraseña" required/>
               <label class="form-label" for="form3Example4">Contraseña</label>
             </div>
   
@@ -40,9 +49,6 @@
         </div>
       </div>
     </div>
-
-    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
-    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 
     <div *ngIf="cliente">
         <h3>Datos del Cliente:</h3>

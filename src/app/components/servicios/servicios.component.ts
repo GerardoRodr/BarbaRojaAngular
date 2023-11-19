@@ -14,6 +14,7 @@ export class ServiciosComponent implements OnInit {
   servicios: Servicio[] = [];
 
   constructor(private apiServicio: ServiciosService) {}
+  
   ngOnInit(): void {
     this.apiServicio.getServicios().subscribe((res:any) => {
       this.servicios = res;
