@@ -15,15 +15,16 @@
         </ul>
 
         <li class="nav-item dropdown d-flex">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="fs-4 bi-person-circle"></i>
+            <a class="nav-link dropdown-toggle fs-5" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                {{ nombreCliente }}
+                <i class="bi-person-circle"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-end">
               @if (isLogged) {
                 <a class="dropdown-item" href="#">Mi Perfil</a>
                 <a class="dropdown-item" href="#">Mis Reservas</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                <a class="dropdown-item" (click)="cerrarSesion()">Cerrar Sesion</a>
               } @else {
                 <a class="dropdown-item" routerLink="login">Iniciar Sesion</a>
                 <a class="dropdown-item" href="register">Registrarse</a>

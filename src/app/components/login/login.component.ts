@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
 import { LoginService } from '../../services/login.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent { // LA LOGICA DEL COMPONENTE
   cliente: any;
   loading: boolean = false;
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router, private location: Location) {}
 
   login() {
     this.loading = true;
@@ -30,6 +31,10 @@ export class LoginComponent { // LA LOGICA DEL COMPONENTE
         this.successMessage = response.mensaje;
         this.cliente = response.cliente;
         this.loading = false;
+        //Se guarda el id en el localStorage
+        localStorage.setItem('userId', this.cliente.id)
+        //Se redirige recargando la pagina al inicio
+        window.location.assign('/');
       },
       (siFalla) => {
         this.loading = false;
