@@ -42,7 +42,7 @@ export class LoginComponent { // LA LOGICA DEL COMPONENTE
           console.log(siFalla.error);
           this.errorMessage = siFalla.error.mensajeError;
         } else {
-          this.errorMessage = 'Error en el inicio de sesión.';
+          this.errorMessage = 'Error en el inicio de sesión';
         }
       }
     );
