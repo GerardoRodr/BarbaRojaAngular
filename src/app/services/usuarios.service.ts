@@ -23,4 +23,8 @@ export class UsuariosService {
   registrarUsuario(usuario: Usuario): Observable<any> {
     return this.http.post(`${this.apiUrl}`, usuario)
   }
+
+  editarUsuario(id: number, usuario: Usuario): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, usuario);
+  }
 }

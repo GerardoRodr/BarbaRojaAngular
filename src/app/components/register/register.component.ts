@@ -24,7 +24,7 @@ export class RegisterComponent {
 
   loading: boolean = false;
 
-  constructor(private usertService: UsuariosService) {}
+  constructor(private userService: UsuariosService) {}
 
   //Validacion nombre
   nombreError: string = '';
@@ -108,7 +108,7 @@ export class RegisterComponent {
     ) {
       this.loading = true;
 
-      this.usertService.registrarUsuario(this.usuario).subscribe(
+      this.userService.registrarUsuario(this.usuario).subscribe(
         (response: any) => {
           this.usuario = response;
           console.log(response);
