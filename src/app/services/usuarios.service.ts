@@ -8,7 +8,7 @@ import { Usuario } from './models/usuario.model';
 })
 
 export class UsuariosService {
-  private apiUrl = 'http://localhost:8080/api/v1/usuarios';
+  private apiUrl = 'https://apibarbaroja.azurewebsites.net/api/v1/usuarios';
 
   constructor(private http: HttpClient) {}
 

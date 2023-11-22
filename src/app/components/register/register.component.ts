@@ -112,7 +112,8 @@ export class RegisterComponent {
         (response: any) => {
           this.usuario = response;
           console.log(response);
-          this.loading = false;
+          localStorage.setItem('userId', this.usuario.id.toString())
+          window.location.assign('/');
         },
         (err) => {
           this.loading = false;
