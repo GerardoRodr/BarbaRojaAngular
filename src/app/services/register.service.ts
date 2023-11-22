@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Cliente } from './models/cliente.model';
+import { Usuario } from './models/usuario.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class RegisterService {
 
   constructor(private http: HttpClient) {}
 
-  registrarCliente(cliente: Cliente): Observable<any> {
+  registrarCliente(cliente: Usuario): Observable<any> {
     return this.http.post(`${this.apiUrl}`, cliente)
   }
 }

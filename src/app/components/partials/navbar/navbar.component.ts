@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink } from '@angular/router';
-import { ClientesService } from '../../../services/clientes.service';
 import Swal from 'sweetalert2';
+import { UsuariosService } from '../../../services/usuarios.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,9 +13,9 @@ import Swal from 'sweetalert2';
 })
 export class NavbarComponent implements OnInit {
   isLogged: Boolean = false;
-  nombreCliente: string = '';
+  nombreUsuario: string = '';
 
-  constructor(private clienteService: ClientesService) {}
+  constructor(private userService: UsuariosService) {}
 
   //Verificacion al inicio si es que esta logeado
   ngOnInit() {
@@ -25,9 +25,10 @@ export class NavbarComponent implements OnInit {
       this.isLogged = !!userId;
 
       if (this.isLogged) {
-        this.clienteService.getClienteById(userId).subscribe(
+        this.userService.getUsuarioById(userId).subscribe(
           (response: any) => {
-            this.nombreCliente = response.nombreCliente;
+            this.nombreUsuario = response.nombreUsuario;
+            console.log(response);
           },
           (err) => {
             this.isLogged = false;

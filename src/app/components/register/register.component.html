@@ -20,11 +20,20 @@
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 
+        @if (camposVacios.length != 0) {
+          <!-- ALERTA -->
+          <div class="alert alert-dismissible alert-warning">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <h4 class="alert-heading">Alerta!</h4>
+            <p class="mb-0">{{ camposVacios }}. Verifique sus datos por favor.</p>
+          </div>
+        }
+
         <form (ngSubmit)="registrar()">
 
           <!-- Nombre input -->
           <div class="form-outline mb-4">
-            <input [(ngModel)]="cliente.nombreCliente" name="nombreCliente" type="text"
+            <input [(ngModel)]="usuario.nombreUsuario" name="nombreUsuario" type="text"
               class="form-control form-control-lg" placeholder="Ingrese su nombre" required (blur)="validarNombre()" required/>
             <label class="form-label" for="form3Example3">Nombre</label>
             <!-- Validación de nombre -->
@@ -35,7 +44,7 @@
 
           <!-- Apellido input -->
           <div class="form-outline mb-4">
-            <input [(ngModel)]="cliente.apellidoCliente" name="apellidoCliente" type="text"
+            <input [(ngModel)]="usuario.apellidoUsuario" name="apellidoUsuario" type="text"
               class="form-control form-control-lg" placeholder="Ingrese su apellido" required
               (blur)="validarApellido()" required/>
             <label class="form-label" for="form3Example3">Apellido</label>
@@ -47,7 +56,7 @@
 
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <input [(ngModel)]="cliente.correo" name="correo" type="email" class="form-control form-control-lg"
+            <input [(ngModel)]="usuario.correo" name="correo" type="email" class="form-control form-control-lg"
               placeholder="Ingrese su correo electrónico" (blur)="validarCorreo()" required/>
             <label class="form-label" for="form3Example3">Correo</label>
             <!-- Validación de correo electrónico -->
@@ -58,7 +67,7 @@
 
           <!-- Password input -->
           <div class="form-outline mb-4">
-            <input [(ngModel)]="cliente.pass" name="pass" type="password" class="form-control form-control-lg"
+            <input [(ngModel)]="usuario.pass" name="pass" type="password" class="form-control form-control-lg"
               placeholder="Ingrese su contraseña" (blur)="validarPassword()" />
             <label class="form-label" for="form3Example3">Contraseña</label>
             <!-- Validación de contraseña -->
@@ -69,7 +78,7 @@
 
           <!-- Telefono input -->
           <div class="form-outline mb-4">
-            <input [(ngModel)]="cliente.telefono" name="telefono" type="text" class="form-control form-control-lg"
+            <input [(ngModel)]="usuario.telefono" name="telefono" type="text" class="form-control form-control-lg"
               placeholder="Ingrese su número telefónico" (blur)="validarTelefono()" required/>
             <label class="form-label" for="form3Example3">Teléfono</label>
             <!-- Validación de número telefónico -->

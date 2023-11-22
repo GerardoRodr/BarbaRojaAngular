@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Cliente } from '../../services/models/cliente.model';
+import { Usuario } from '../../services/models/usuario.model';
 import { RegisterService } from '../../services/register.service';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-register',
@@ -12,26 +13,28 @@ import { RegisterService } from '../../services/register.service';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  cliente: Cliente = {
+  usuario: Usuario = {
     id: 0,
-    nombreCliente: '',
-    apellidoCliente: '',
+    nombreUsuario: '',
+    apellidoUsuario: '',
     correo: '',
     pass: '',
     telefono: '',
+    admin: false,
   };
+
   loading: boolean = false;
 
-  constructor(private registerService: RegisterService) {}
+  constructor(private usertService: UsuariosService) {}
 
   //Validacion nombre
   nombreError: string = '';
   validarNombre() {
     const nombrePattern = /^[a-zA-Z\s]{1,25}$/;
 
-    if (!this.cliente.nombreCliente) {
+    if (!this.usuario.nombreUsuario) {
       this.nombreError = 'El nombre es requerido.';
-    } else if (!nombrePattern.test(this.cliente.nombreCliente)) {
+    } else if (!nombrePattern.test(this.usuario.nombreUsuario)) {
       this.nombreError =
         'Ingrese un nombre válido (máximo 25 caracteres y solo letras y espacios).';
     } else {
@@ -44,9 +47,9 @@ export class RegisterComponent {
   validarApellido() {
     const apellidoPattern = /^[a-zA-Z\s]{1,25}$/;
 
-    if (!this.cliente.apellidoCliente) {
+    if (!this.usuario.apellidoUsuario) {
       this.apellidoError = 'El apellido es requerido.';
-    } else if (!apellidoPattern.test(this.cliente.apellidoCliente)) {
+    } else if (!apellidoPattern.test(this.usuario.apellidoUsuario)) {
       this.apellidoError =
         'Ingrese un apellido válido (máximo 25 caracteres y solo letras y espacios).';
     } else {
@@ -59,9 +62,9 @@ export class RegisterComponent {
   validarCorreo() {
     const correoPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (!this.cliente.correo) {
+    if (!this.usuario.correo) {
       this.correoError = 'El correo electrónico es requerido.';
-    } else if (!correoPattern.test(this.cliente.correo)) {
+    } else if (!correoPattern.test(this.usuario.correo)) {
       this.correoError = 'Por favor, ingrese un correo electrónico válido.';
     } else {
       this.correoError = '';
@@ -71,7 +74,7 @@ export class RegisterComponent {
   //Validacion contraseña
   passError: string = '';
   validarPassword() {
-    const passLength = this.cliente.pass.length;
+    const passLength = this.usuario.pass.length;
 
     if (passLength < 9 || passLength > 15) {
       this.passError = 'La contraseña debe tener entre 9 y 15 caracteres.';
@@ -85,28 +88,41 @@ export class RegisterComponent {
   validarTelefono() {
     const telefonoPattern = /^[0-9]{9}$/;
 
-    if (!this.cliente.telefono) {
+    if (!this.usuario.telefono) {
       this.telefonoError = 'El número telefónico es requerido.';
-    } else if (!telefonoPattern.test(this.cliente.telefono)) {
+    } else if (!telefonoPattern.test(this.usuario.telefono)) {
       this.telefonoError = 'Ingrese un número telefónico válido de 9 dígitos.';
     } else {
       this.telefonoError = '';
     }
   }
 
+  camposVacios: String = '';
   registrar() {
-    this.loading = true;
+    // Verificar si todos los campos requeridos están llenos
+    if (
+      this.usuario.nombreUsuario &&
+      this.usuario.apellidoUsuario &&
+      this.usuario.correo &&
+      this.usuario.pass &&
+      this.usuario.telefono
+    ) {
+      this.loading = true;
 
-    this.registerService.registrarCliente(this.cliente).subscribe(
-      (response: any) => {
-        this.cliente = response;
-        console.log(response);
-        this.loading = false;
-      },
-      (err) => {
-        this.loading = false;
-        console.error(err);
-      }
-    );
+      this.usertService.registrarUsuario(this.usuario).subscribe(
+        (response: any) => {
+          this.usuario = response;
+          console.log(response);
+          this.loading = false;
+        },
+        (err) => {
+          this.loading = false;
+          console.error(err);
+        }
+      );
+    } else {
+      // Campos vacios
+      this.camposVacios = 'Completa los campos requeridos';
+    }
   }
 }
