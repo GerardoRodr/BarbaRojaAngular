@@ -19,3 +19,8 @@
     transform: translate(-50%, -50%);
     text-align: center;
   }
+
+  h1#tituloInicio {
+    color: red;
+    text-shadow: 1px 1px 5px black;
+  }

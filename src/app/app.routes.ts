@@ -4,6 +4,8 @@ import { ServiciosComponent } from './components/servicios/servicios.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { CrearReservaComponent } from './components/crear-reserva/crear-reserva.component';
+import { MisReservasComponent } from './components/mis-reservas/mis-reservas.component';
 
 export const routes: Routes = [
     {
@@ -30,5 +32,15 @@ export const routes: Routes = [
         path: 'perfil',
         title: 'Perfil',
         component: PerfilComponent
+    },
+    {
+        path: 'reservar/:id',
+        title: 'Reservar',
+        component: CrearReservaComponent
+    },
+    {
+        path: 'misReservas',
+        title: 'Mis Reservas',
+        component: MisReservasComponent
     }
 ];

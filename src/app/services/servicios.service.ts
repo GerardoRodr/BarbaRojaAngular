@@ -13,4 +13,8 @@ export class ServiciosService {
   getServicios() {
     return this.http.get(`${this.apiUrl}/servicios`)
   }
+
+  getServicioById(idServicio: number) {
+    return this.http.get(`${this.apiUrl}/servicios/${idServicio}`)
+  }
 }

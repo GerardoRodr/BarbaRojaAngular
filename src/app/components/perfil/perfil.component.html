@@ -1,20 +1,20 @@
 <section>
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="card mb-4">
-            <div class="card-body text-center">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-                class="rounded-circle img-fluid" style="width: 150px;">
-              <h5 class="my-3">Johnatan Smith</h5>
-              <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-primary" (click)="changeEditable()">Editar Perfil</button>
-                <button type="button" class="btn btn-outline-danger ms-1">Eliminar Cuenta</button>
-              </div>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <i style="font-size: 150px;" class="bi bi-person-circle"> </i>
+            <h5 class="mt-0"> {{ usuario.nombreUsuario }} {{ usuario.apellidoUsuario }}</h5>
+            <h6 class="mb-3 mt-0 text-muted"> {{ usuario.correo }}</h6>
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary" (click)="changeEditable()">Editar Perfil</button>
+              <button type="button" class="btn btn-outline-danger ms-1">Eliminar Cuenta</button>
             </div>
           </div>
         </div>
-        <div class="col-lg-8">
+      </div>
+      <div class="col-lg-8">
         <form (ngSubmit)="editarUsuario()">
           <div class="card mb-4">
             <div class="card-body">
@@ -23,12 +23,12 @@
                   <p class="mb-0">Nombre</p>
                 </div>
                 <div class="col-sm-9">
-                    @if (isEditable) {
-                        <input type="text" [(ngModel)]="usuario.nombreUsuario" required
-                        class="form-control bg-dark text-white border-white" name="nombre" id="" value="Johnatan">
-                    } @else {
-                        <p class="text-muted mb-0">{{ usuario.nombreUsuario }}</p>
-                    }
+                  @if (isEditable) {
+                  <input type="text" [(ngModel)]="usuario.nombreUsuario" required
+                    class="form-control bg-dark text-white border-white" name="nombre" id="" value="Johnatan">
+                  } @else {
+                  <p class="text-muted mb-0">{{ usuario.nombreUsuario }}</p>
+                  }
                 </div>
               </div>
               <hr>
@@ -37,12 +37,12 @@
                   <p class="mb-0">Apellidos</p>
                 </div>
                 <div class="col-sm-9">
-                    @if (isEditable) {
-                        <input type="text" [(ngModel)]="usuario.apellidoUsuario"
-                        class="form-control bg-dark text-white border-white" name="apellidos" id="" >
-                    } @else {
-                        <p class="text-muted mb-0">{{usuario.apellidoUsuario}}</p>
-                    }
+                  @if (isEditable) {
+                  <input type="text" [(ngModel)]="usuario.apellidoUsuario"
+                    class="form-control bg-dark text-white border-white" name="apellidos" id="">
+                  } @else {
+                  <p class="text-muted mb-0">{{usuario.apellidoUsuario}}</p>
+                  }
                 </div>
               </div>
               <hr>
@@ -51,12 +51,12 @@
                   <p class="mb-0">Telefono</p>
                 </div>
                 <div class="col-sm-9">
-                    @if (isEditable) {
-                        <input type="text" [(ngModel)]="usuario.telefono"
-                        class="form-control bg-dark text-white border-white" name="telefono" id="">
-                    } @else {
-                        <p class="text-muted mb-0">{{usuario.telefono}}</p>
-                    }
+                  @if (isEditable) {
+                  <input type="text" [(ngModel)]="usuario.telefono" class="form-control bg-dark text-white border-white"
+                    name="telefono" id="">
+                  } @else {
+                  <p class="text-muted mb-0">{{usuario.telefono}}</p>
+                  }
                 </div>
               </div>
               <hr>
@@ -65,12 +65,12 @@
                   <p class="mb-0">Correo</p>
                 </div>
                 <div class="col-sm-9">
-                    @if (isEditable) {
-                        <input type="text" [(ngModel)]="usuario.correo"
-                        class="form-control bg-dark text-white border-white" name="correo" id="">
-                    } @else {
-                        <p class="text-muted mb-0">{{usuario.correo}}</p>
-                    }
+                  @if (isEditable) {
+                  <input type="text" [(ngModel)]="usuario.correo" class="form-control bg-dark text-white border-white"
+                    name="correo" id="">
+                  } @else {
+                  <p class="text-muted mb-0">{{usuario.correo}}</p>
+                  }
                 </div>
               </div>
               <hr>
@@ -79,21 +79,21 @@
                   <p class="mb-0">Contraseña</p>
                 </div>
                 <div class="col-sm-9">
-                    @if (isEditable) {
-                        <input type="text" [(ngModel)]="usuario.pass"
-                        class="form-control bg-dark text-white border-white" name="contrasena" id="">
-                    } @else {
-                        <p class="text-muted mb-0">{{usuario.pass}}</p>
-                    }
+                  @if (isEditable) {
+                  <input type="text" [(ngModel)]="usuario.pass" class="form-control bg-dark text-white border-white"
+                    name="contrasena" id="">
+                  } @else {
+                  <p class="text-muted mb-0">{{usuario.pass}}</p>
+                  }
                 </div>
               </div>
             </div>
             @if (isEditable) {
-                <button type="submit" [disabled]="loading" class="btn btn-primary m-2">Confirmar</button>
+            <button type="submit" [disabled]="loading" class="btn btn-primary m-2">Confirmar</button>
             }
           </div>
         </form>
-        </div>
       </div>
     </div>
+  </div>
 </section>
