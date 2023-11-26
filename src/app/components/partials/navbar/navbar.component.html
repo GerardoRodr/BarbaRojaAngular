@@ -12,6 +12,17 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Acerca de nosotros</a>
           </li>
+          @if (isAdmin) {
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle show" data-bs-toggle="dropdown" 
+              href="#" role="button" aria-haspopup="true" aria-expanded="true">Utilidades de Administrador</a>
+              <div class="dropdown-menu show" data-bs-popper="static">
+                <a class="dropdown-item" href="#">Gestionar Reservas</a>
+                <a class="dropdown-item" href="#">Gestionar Servicios</a>
+                <a class="dropdown-item" href="#">Gestionar Usuarios</a>
+              </div>
+            </li>
+          }
         </ul>
 
         <li class="nav-item dropdown d-flex">

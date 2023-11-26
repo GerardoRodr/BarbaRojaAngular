@@ -14,6 +14,7 @@ import { UsuariosService } from '../../../services/usuarios.service';
 export class NavbarComponent implements OnInit {
   isLogged: Boolean = false;
   nombreUsuario: string = '';
+  isAdmin: Boolean = false;
 
   constructor(private userService: UsuariosService) {}
 
@@ -28,6 +29,7 @@ export class NavbarComponent implements OnInit {
         this.userService.getUsuarioById(userId).subscribe(
           (response: any) => {
             this.nombreUsuario = response.nombreUsuario;
+            this.isAdmin = response.admin;
           },
           (err) => {
             this.isLogged = false;
