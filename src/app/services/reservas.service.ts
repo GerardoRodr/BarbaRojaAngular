@@ -22,4 +22,12 @@ export class ReservasService {
 
     return this.http.post(`${this.apiUrl}/crear`, body);
   }
+
+  getReservasById(idUsuario: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/cliente/${idUsuario}`)
+  }
+
+  cancelarReserva(idReserva: number) {
+    return this.http.put(`${this.apiUrl}/actualizarEstado/${idReserva}?estado=3`, null)
+  }
 }

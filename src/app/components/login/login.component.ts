@@ -47,36 +47,4 @@ export class LoginComponent { // LA LOGICA DEL COMPONENTE
       }
     );
   }
-
-  /*
-
-  constructor(private loginService: LoginService, private router: Router, private location: Location) {}
-
-  login() {
-    this.loading = true;
-    this.errorMessage = '';
-    this.successMessage = '';
-
-    this.loginService.loginCliente(this.credentials).subscribe(
-      (response: any) => {
-        this.successMessage = response.mensaje;
-        this.usuario = response.usuario;
-        this.loading = false;
-        //Se guarda el id en el localStorage
-        localStorage.setItem('userId', this.usuario.id)
-        //Se redirige recargando la pagina al inicio
-        window.location.assign('/');
-      },
-      (siFalla) => {
-        this.loading = false;
-        if (siFalla.status === 401) {
-          console.log(siFalla.error);
-          this.errorMessage = siFalla.error.mensajeError;
-        } else {
-          this.errorMessage = 'Error en el inicio de sesión';
-        }
-      }
-    );
-  }
-  */
 }
