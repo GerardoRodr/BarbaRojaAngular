@@ -1,0 +1,52 @@
+<div class="container text-white rounded table-responsive mt-3">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Servicio</th>
+                <th>Fecha de Reserva</th>
+                <th>Fecha de Creación</th>
+                <th>Estado</th>
+                <th>Editar Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (r of reservas; track r.id) {
+            <tr>
+                <td>{{ r.id }}</td>
+                <td>{{ r.usuario.nombreUsuario }}</td>
+                <td>{{ r.servicio.nombreServicio }}</td>
+                <td>{{ r.fechaReserva }}</td>
+                <td>{{ r.fechaCreacion }}</td>
+                @switch (r.estado) {
+                    @case ("PENDIENTE") {
+                        <td><span class="text-warning"> {{ r.estado }} </span></td>
+                    }
+                    @case ("CANCELADA") {
+                        <td><span class="text-danger"> {{ r.estado }} </span></td>
+                    }
+                    @case ("FINALIZADA") {
+                        <td><span class="text-success"> {{ r.estado }} </span></td>
+                    }
+                }
+                <td>
+                    <!-- Dropdown button -->
+                    <div class="dropdown m-auto">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item text-warning " (click)="modificarEstado(r.id, 1)">PENDIENTE</a></li>
+                            <li><a class="dropdown-item text-success" (click)="modificarEstado(r.id, 2)">FINALIZADA</a></li>
+                            <li><a class="dropdown-item text-danger" (click)="modificarEstado(r.id, 3)">CANCELADA</a></li>  
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

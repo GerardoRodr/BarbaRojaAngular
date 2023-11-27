@@ -14,10 +14,10 @@
           </li>
           @if (isAdmin) {
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle show" data-bs-toggle="dropdown" 
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" 
               href="#" role="button" aria-haspopup="true" aria-expanded="true">Utilidades de Administrador</a>
-              <div class="dropdown-menu show" data-bs-popper="static">
-                <a class="dropdown-item" href="#">Gestionar Reservas</a>
+              <div class="dropdown-menu" data-bs-popper="static">
+                <a class="dropdown-item" routerLink="gestionarReservas">Gestionar Reservas</a>
                 <a class="dropdown-item" href="#">Gestionar Servicios</a>
                 <a class="dropdown-item" href="#">Gestionar Usuarios</a>
               </div>
@@ -26,7 +26,8 @@
         </ul>
 
         <li class="nav-item dropdown d-flex">
-            <a class="nav-link dropdown-toggle fs-5" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle fs-5" data-bs-toggle="dropdown" href="#" 
+            role="button" aria-haspopup="true" aria-expanded="false">
                 {{ nombreUsuario }}
                 <i class="bi-person-circle"></i>
             </a>
