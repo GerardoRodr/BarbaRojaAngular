@@ -31,4 +31,8 @@ export class ServiciosService {
   editarServicio(servicio: Servicio) {
     return this.http.put(`${this.apiUrl}/servicios/${servicio.id}`, servicio);
   }
+
+  eliminarServicio(idServicio: number) {
+    return this.http.delete(`${this.apiUrl}/servicios/${idServicio}`)
+  }
 }
