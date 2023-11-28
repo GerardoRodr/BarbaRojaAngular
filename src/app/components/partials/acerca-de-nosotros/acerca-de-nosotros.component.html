@@ -1,0 +1,43 @@
+
+<!-- Contenido principal -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1 class="display-4 text-danger">Bienvenido a Barba Roja</h1>
+            <p class="lead">Descubre el arte de la barbería en nuestra exclusiva barbería en Trujillo. En Barba Roja, no solo nos dedicamos a cortar cabello y afeitar barbas, sino que creamos experiencias únicas para cada cliente.</p>
+        </div>
+        <div class="col-lg-6">
+            <img src="/assets/barbaRojaLocal.jpg" class="img-fluid rounded" alt="Barba Roja">
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-6">
+            <h2 class="text-danger">Nuestra Pasión</h2>
+            <p>Nos apasiona el arte de la barbería y nos enorgullece nuestro equipo de barberos altamente capacitados. Cada corte, recorte o afeitado es una obra maestra en sí misma, creada con dedicación y atención al detalle.</p>
+        </div>
+        <div class="col-lg-6">
+            <h2 class="text-danger">Estilo Personalizado</h2>
+            <p>En Barba Roja, entendemos que cada persona es única. Nuestros barberos trabajan contigo para crear un estilo que refleje tu personalidad y realce tu atractivo. Desde cortes clásicos hasta tendencias modernas, estamos aquí para transformar tu estilo.</p>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-12">
+            <h2 class="text-danger">Servicios Destacados</h2>
+            <div class="row">
+                @for (s of serviciosDestacados; track s.id) {
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="{{s.rutaImagen}}" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{s.nombreServicio}}</h5>
+                                <p class="card-text">{{s.descripcion}}</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

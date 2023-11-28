@@ -13,6 +13,7 @@ import { EditarServicioComponent } from './components/admin/gestionar-servicios/
 import { CrearServicioComponent } from './components/admin/gestionar-servicios/crear-servicio/crear-servicio.component';
 import { GestionarUsuariosComponent } from './components/admin/gestionar-usuarios/gestionar-usuarios.component';
 import { EditarUsuarioComponent } from './components/admin/gestionar-usuarios/editar-usuario/editar-usuario.component';
+import { AcercaDeNosotrosComponent } from './components/partials/acerca-de-nosotros/acerca-de-nosotros.component';
 
 export const routes: Routes = [
     {
@@ -84,5 +85,10 @@ export const routes: Routes = [
         path: 'gestionarUsuarios/editarUsuario/:id',
         title: 'Editar Usuarios',
         component: EditarUsuarioComponent
+    },
+    {
+        path: 'acerca',
+        title: 'Acerca de Nosotros',
+        component: AcercaDeNosotrosComponent
     }
 ];
