@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Reserva } from '../../../services/models/reserva.model';
 import { ReservasService } from '../../../services/reservas.service';
 import Swal from 'sweetalert2'
+import { error } from 'console';
 
 @Component({
   selector: 'app-gestionar-reservas',
@@ -47,36 +48,27 @@ export class GestionarReservasComponent implements OnInit {
   }
 
   modificarEstado(idReserva: number, estado: number) {
-    Swal.fire({
-      title: `<strong class="text-body">Genial!</strong>`,
-      icon: 'success',
-      html: `
-        <p class="text-body-secondary m-0">Se ha modificado correctamente el estado.</p>
-      `,
-      background: '#303030',
-      buttonsStyling: false,
-      showCloseButton: true,
-      showConfirmButton: false,
-      focusConfirm: false,
-    }).then((result) => {
-      if(result.isDismissed) {
-        this.reservasService.modificarEstadoReserva(idReserva, estado).subscribe( (res:any) => {
-        })
+    this.reservasService.modificarEstadoReserva(idReserva, estado).subscribe( 
+      (res:any) => {},
+      (error) => {},
+      () => {
         Swal.fire({
-          title: '<strong class="text-body">Se recargara la pagina para que pueda ver los cambios</strong>',
-          icon: 'warning',
-          background: "#303030",
+          title: `<strong class="text-body">Genial!</strong>`,
+          icon: 'success',
+          html: `
+            <p class="text-body-secondary m-0">Se ha modificado correctamente el estado.</p>
+          `,
+          background: '#303030',
+          buttonsStyling: false,
           showCloseButton: true,
           showConfirmButton: false,
-          showCancelButton: false,
-          focusConfirm: false
-        }).then((result) => {
-          if (result.isConfirmed || result.isDismissed) {
+          focusConfirm: false,
+        }).then((result) => { 
+          if (result.isDismissed) {
             window.location.reload();
           }
-        });
-      }
-    })
+         })
+      })
   }
 
   formatearFecha(inputDate: Date | string): string {
