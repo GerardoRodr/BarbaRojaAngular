@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <h2>Editar Usuario</h2>
+    <form>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="nombreUsuario" class="form-label">Nombre de Usuario</label>
+                <input [(ngModel)]="usuario.nombreUsuario" type="text" class="form-control" id="nombreUsuario" name="nombreUsuario">
+            </div>
+            <div class="col-md-6">
+                <label for="apellidoUsuario" class="form-label">Apellido de Usuario</label>
+                <input [(ngModel)]="usuario.apellidoUsuario" type="text" class="form-control" id="apellidoUsuario" name="apellidoUsuario">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="correo" class="form-label">Correo Electrónico</label>
+                <input [(ngModel)]="usuario.correo" type="email" class="form-control" id="correo" name="correo">
+            </div>
+            <div class="col-md-6">
+                <label for="pass" class="form-label">Contraseña</label>
+                <input [(ngModel)]="usuario.pass" type="password" class="form-control" id="pass" name="pass">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="tel" [(ngModel)]="usuario.telefono" class="form-control" id="telefono" name="telefono">
+            </div>
+            <div class="col-md-6">
+                <label for="admin" class="form-label">¿Es administrador?</label>
+                <div class="form-check form-switch">
+                    <input [(ngModel)]="usuario.admin" class="form-check-input" type="checkbox" id="admin" name="admin">
+                    <label class="form-check-label" for="admin">Sí</label>
+                </div>
+            </div>
+        </div>
+        <button type="submit" (click)="editarUsuario(usuario.id, usuario.nombreUsuario)" class="btn btn-primary">Guardar</button>
+    </form>
+</div>

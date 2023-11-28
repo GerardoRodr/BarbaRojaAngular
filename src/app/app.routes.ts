@@ -11,6 +11,8 @@ import { GestionarReservasDetalleComponent } from './components/admin/gestionar-
 import { GestionarServiciosComponent } from './components/admin/gestionar-servicios/gestionar-servicios.component';
 import { EditarServicioComponent } from './components/admin/gestionar-servicios/editar-servicio/editar-servicio.component';
 import { CrearServicioComponent } from './components/admin/gestionar-servicios/crear-servicio/crear-servicio.component';
+import { GestionarUsuariosComponent } from './components/admin/gestionar-usuarios/gestionar-usuarios.component';
+import { EditarUsuarioComponent } from './components/admin/gestionar-usuarios/editar-usuario/editar-usuario.component';
 
 export const routes: Routes = [
     {
@@ -72,5 +74,15 @@ export const routes: Routes = [
         path: 'gestionarServicios/crearServicio',
         title: 'Editar Servicio',
         component: CrearServicioComponent
+    },
+    {
+        path: 'gestionarUsuarios',
+        title: 'Gestionar Usuarios',
+        component: GestionarUsuariosComponent
+    },
+    {
+        path: 'gestionarUsuarios/editarUsuario/:id',
+        title: 'Editar Usuarios',
+        component: EditarUsuarioComponent
     }
 ];
