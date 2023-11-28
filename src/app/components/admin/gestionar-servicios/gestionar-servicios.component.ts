@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Servicio } from '../../../services/models/servicio.model';
 import { ServiciosService } from '../../../services/servicios.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UsuariosService } from '../../../services/usuarios.service';
 
 @Component({
   selector: 'app-gestionar-servicios',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './gestionar-servicios.component.html',
   styleUrl: './gestionar-servicios.component.css'
 })

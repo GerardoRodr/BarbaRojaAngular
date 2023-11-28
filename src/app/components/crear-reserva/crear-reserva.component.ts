@@ -95,7 +95,13 @@ export class CrearReservaComponent implements OnInit {
         .crearReserva(userId, this.idServicio, fechaCompleta)
         .subscribe(
           (response: any) => {
-            Swal.fire({
+            console.log(response);
+          },
+          (err) => {
+            this.showDialog('error', err.error.mensaje);
+          },
+          () => {
+              Swal.fire({
               title: `<strong class="text-body">Todo Listo!</strong>`,
               icon: 'success',
               html: `
@@ -112,11 +118,6 @@ export class CrearReservaComponent implements OnInit {
                 this.router.navigateByUrl('/misReservas')
               }
             });
-
-            console.log(response);
-          },
-          (err) => {
-            this.showDialog('error', err.error.mensaje);
           }
         );
     }

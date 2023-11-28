@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Servicio } from './models/servicio.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,9 @@ export class ServiciosService {
 
   getCategoriasServicio() {
     return this.http.get(`${this.apiUrl}/categoriaServicios`)
+  }
+
+  editarServicio(servicio: Servicio) {
+    return this.http.put(`${this.apiUrl}/servicios/${servicio.id}`, servicio);
   }
 }
