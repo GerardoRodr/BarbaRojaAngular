@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <h2>Crear Nuevo Servicio</h2>
+  
+    <form [formGroup]="formulario">
+      <div class="mb-3">
+        <label for="nombreServicio" class="form-label">Nombre del Servicio</label>
+        <input formControlName="nombreServicio" type="text" class="form-control" id="nombreServicio" placeholder="Ingrese el nombre del servicio" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea formControlName="descripcion" class="form-control" id="descripcion" placeholder="Ingrese la descripción del servicio" required></textarea>
+      </div>
+  
+      <div class="mb-3">
+        <label for="precio" class="form-label">Precio</label>
+        <input formControlName="precio" type="number" class="form-control" id="precio" placeholder="Ingrese el precio" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="rutaImagen" class="form-label">Imagen</label>
+        <input (change)="onFileSelected($event)" formControlName="imagen" type="file" class="form-control" id="rutaImagen" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="categoria" class="form-label">Categoría</label>
+        <select formControlName="categoriaId" class="form-select" name="categoria" id="categoria">
+            @for (cat of categorias; track cat.id) {
+                <option value="{{ cat.id }}">{{cat.nombreCategoria}}</option>
+            }
+        </select>
+      </div>
+  
+      <button type="submit" (click)="enviarDatos()" class="btn btn-primary">Crear Servicio</button>
+    </form>
+  </div>
+  

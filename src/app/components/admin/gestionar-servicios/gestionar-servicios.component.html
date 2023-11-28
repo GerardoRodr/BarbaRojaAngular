@@ -1,1 +1,31 @@
-<p>gestionar-servicios works!</p>
+<div class="container text-white rounded table-responsive mt-3">
+    <h2>Lista de Servicios</h2>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre del Servicio</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Imagen</th>
+          <th>Categoría</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (s of servicios; track s.id) {
+            <tr>
+                <td>{{s.id}}</td>
+                <td>{{s.nombreServicio}}</td>
+                <td>{{s.descripcion}}</td>
+                <td>S/{{s.precio}}</td>
+                <td><img class="img-fluid"  src="{{s.rutaImagen}}"></td>
+                <td>{{s.categoria.nombreCategoria}}</td>
+                <td><button class="btn btn-primary"><i class="bi bi-pencil-square"></i></button></td>
+                <td><button class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
+            </tr>
+        }
+      </tbody>
+    </table>
+  </div>

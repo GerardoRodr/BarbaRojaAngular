@@ -8,6 +8,9 @@ import { CrearReservaComponent } from './components/crear-reserva/crear-reserva.
 import { MisReservasComponent } from './components/mis-reservas/mis-reservas.component';
 import { GestionarReservasComponent } from './components/admin/gestionar-reservas/gestionar-reservas.component';
 import { GestionarReservasDetalleComponent } from './components/admin/gestionar-reservas-detalle/gestionar-reservas-detalle.component';
+import { GestionarServiciosComponent } from './components/admin/gestionar-servicios/gestionar-servicios.component';
+import { EditarServicioComponent } from './components/admin/gestionar-servicios/editar-servicio/editar-servicio.component';
+import { CrearServicioComponent } from './components/admin/gestionar-servicios/crear-servicio/crear-servicio.component';
 
 export const routes: Routes = [
     {
@@ -54,5 +57,20 @@ export const routes: Routes = [
         path: 'gestionarReservasDetalle',
         title: 'Detalle Reservas',
         component: GestionarReservasDetalleComponent
+    },
+    {
+        path: 'gestionarServicios',
+        title: 'Gestionar Servicios',
+        component: GestionarServiciosComponent
+    },
+    {
+        path: 'gestionarServicios/editarServicio/:id',
+        title: 'Editar Servicio',
+        component: EditarServicioComponent
+    },
+    {
+        path: 'gestionarServicios/crearServicio',
+        title: 'Editar Servicio',
+        component: CrearServicioComponent
     }
 ];
