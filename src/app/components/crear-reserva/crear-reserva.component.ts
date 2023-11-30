@@ -92,7 +92,7 @@ export class CrearReservaComponent implements OnInit {
       const userId = Number(localStorage.getItem('userId') || 0);
       //Se hace la peticios post crearReserva
       this.reservaService
-        .crearReserva(userId, this.idServicio, fechaCompleta)
+        .crearReserva(userId, this.idServicio, fechaCompletaString)
         .subscribe(
           (response: any) => {
             console.log(response);

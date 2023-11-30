@@ -14,14 +14,13 @@ export class ReservasService {
   crearReserva(
     usuarioId: number,
     servicioId: number,
-    fecha: Date
+    fecha: string
   ): Observable<any> {
-    const fechaISO = fecha.toISOString();
 
     const body = {
       usuario: { id: usuarioId },
       servicio: { id: servicioId },
-      fechaReserva: fechaISO, // Convertir la fecha a un formato ISO string
+      fechaReserva: fecha, // Convertir la fecha a un formato ISO string
     };
 
     return this.http.post(`${this.apiUrl}/crear`, body);
