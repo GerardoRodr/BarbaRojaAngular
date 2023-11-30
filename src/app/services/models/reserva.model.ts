@@ -5,7 +5,7 @@ export interface Reserva {
     id: number;
     usuario: Usuario;
     servicio: Servicio;
-    fechaReserva: Date;
+    fechaReserva: string;
     fechaCreacion: Date;
     estado: 'PENDIENTE' | 'FINALIZADA' | 'CANCELADA';
 }
