@@ -1,0 +1,17 @@
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        <!-- ITEM SERVICIO -->
+        @for (s of serviciosDestacados; track s.id) {
+        <div class="col">
+            <div class="card mb-3 h-100">
+                <h4 class="card-header" style="min-height: 90px;"> {{ s.servicio.nombreServicio }}</h4>
+                <img src="{{ s.servicio.rutaImagen }}" class="d-block user-select-none" alt="Imagen del Servicio">
+                <div class="card-body">
+                    <p class="card-text">{{ s.servicio.descripcion }} </p>
+                    <p class="card-text">Precio: S/{{ s.servicio.precio }}</p>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

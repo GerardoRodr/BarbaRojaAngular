@@ -35,4 +35,8 @@ export class ServiciosService {
   eliminarServicio(idServicio: number) {
     return this.http.delete(`${this.apiUrl}/servicios/${idServicio}`)
   }
+
+  getServiciosDestacados() {
+    return this.http.get(`${this.apiUrl}/reservas/serviciosDestacados`)
+  }
 }
