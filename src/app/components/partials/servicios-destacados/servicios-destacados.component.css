@@ -1,57 +1,22 @@
-.cards {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-  }
-  
-  .cards .red {
-    background-color: #007e9e;
-  }
-  
-  .cards .blue {
-    background-color: #0062ff;
-  }
-  
-  .cards .green {
-    background-color: #18cd5e;
-  }
-  
-  .cards .card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    height: 100px;
-    width: 100px;
-    border-radius: 10px;
-    color: white;
+  .preCard {
+    z-index: 1100;
     cursor: pointer;
     transition: 400ms;
   }
   
-  .cards .card p.tip {
-    font-size: 1em;
-    font-weight: 700;
+  .preCard:hover {
+    transform: scale(1.1, 1.1);
   }
   
-  .cards .card p.second-text {
-    font-size: .7em;
-  }
-  
-  .cards .card:hover {
-    transform: scale(1.2, 1.2);
-  }
-  
-  .cards:hover > .card:not(:hover) {
+  .cards:hover > .preCard:not(:hover) {
     filter: blur(10px);
     transform: scale(0.9, 0.9);
   }
 
   .card-header {
-    min-height: 75px; /* Establece la altura mínima deseada */
+    min-height: 75px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-}
+  }

@@ -20,7 +20,7 @@ export class ReservasService {
     const body = {
       usuario: { id: usuarioId },
       servicio: { id: servicioId },
-      fechaReserva: fecha, // Convertir la fecha a un formato ISO string
+      fechaReserva: fecha,
     };
 
     return this.http.post(`${this.apiUrl}/crear`, body);
