@@ -1,20 +1,19 @@
-import { Component } from '@angular/core';
-import { CommonModule, Location } from '@angular/common';
+import { Component, OnInit, NgZone, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UsuariosService } from '../../services/usuarios.service';
+
+declare var grecaptcha: any;
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule], //SOLO HTML / COMPONENTES
+  imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
-
-export class LoginComponent { // LA LOGICA DEL COMPONENTE
-  credentials = 
-  { 
+export class LoginComponent implements OnInit {
+  credentials = { 
     correo: '', 
     pass: '' 
   };
@@ -23,32 +22,86 @@ export class LoginComponent { // LA LOGICA DEL COMPONENTE
   successMessage: string = '';
   usuario: any;
   loading: boolean = false;
+  recaptchaResponse: string | null = null;
+  isBrowser: boolean;
 
-  constructor(private userService: UsuariosService) {}
+  constructor(
+    private userService: UsuariosService,
+    private ngZone: NgZone,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  ngOnInit() {
+    if (this.isBrowser) {
+      this.loadRecaptchaScript();
+      this.setupRecaptchaCallbacks();
+    }
+  }
+
+  loadRecaptchaScript() {
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoaded&render=explicit';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }
+
+  setupRecaptchaCallbacks() {
+    (window as any).onRecaptchaLoaded = () => {
+      if (typeof grecaptcha !== 'undefined') {
+        grecaptcha.render('recaptcha-container', {
+          sitekey: '6LdHuFArAAAAAKuIsX3XRAE9AW7a_Yq3tuwMy8RT',
+          callback: (response: string) => {
+            this.ngZone.run(() => {
+              this.recaptchaResponse = response;
+            });
+          },
+          'expired-callback': () => {
+            this.ngZone.run(() => {
+              this.recaptchaResponse = null;
+            });
+          }
+        });
+      }
+    };
+  }
 
   login() {
+    if (!this.recaptchaResponse) {
+      this.errorMessage = 'Por favor, completa el reCAPTCHA';
+      return;
+    }
+
     this.loading = true;
     this.errorMessage = '';
     this.successMessage = '';
 
-    this.userService.loginUsuario(this.credentials).subscribe(
+    // Agregar el token de reCAPTCHA a las credenciales
+    const credentialsWithRecaptcha = {
+      ...this.credentials,
+      recaptchaToken: this.recaptchaResponse
+    };
+
+    this.userService.loginUsuario(credentialsWithRecaptcha).subscribe(
       (response: any) => {
         this.successMessage = response.mensaje;
         this.usuario = response.usuario;
         this.loading = false;
-        //Se guarda el id en el localStorage
-        localStorage.setItem('userId', this.usuario.id)
-        //Se redirige recargando la pagina al inicio
+        localStorage.setItem('userId', this.usuario.id);
         window.location.assign('/');
       },
       (siFalla) => {
         this.loading = false;
         if (siFalla.status === 401) {
-          console.log(siFalla.error);
           this.errorMessage = siFalla.error.mensajeError;
         } else {
           this.errorMessage = 'Error en el inicio de sesión';
         }
+        // Resetear el reCAPTCHA en caso de error
+        grecaptcha.reset();
+        this.recaptchaResponse = null;
       }
     );
   }

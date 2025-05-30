@@ -22,7 +22,7 @@
             <div class="alert alert-dismissible alert-warning">
               <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
               <h4 class="alert-heading">Alerta!</h4>
-              <p class="mb-0">{{ errorMessage }}. Verifique sus datos por favor.</p>
+              <p class="mb-0">{{ errorMessage }}.</p>
             </div>
           }
 
@@ -38,7 +38,10 @@
               <input [(ngModel)]="credentials.pass" type="password" name="pass" id="form3Example4" class="form-control form-control-lg" placeholder="Ingrese su contraseña" required/>
               <label class="form-label" for="form3Example4">Contraseña</label>
             </div>
-  
+            
+            <!-- reCAPTCHA v2 Checkbox -->
+            <div class="recaptcha-container" id="recaptcha-container"></div>
+
             <div class="text-center text-lg-start mt-4 pt-2">
               <button type="submit" class="btn btn-primary btn-lg" [disabled]="loading" style="padding-left: 2.5rem; padding-right: 2.5rem;">
                 Ingresar
