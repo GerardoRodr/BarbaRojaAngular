@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   loading: boolean = false;
   recaptchaResponse: string | null = null;
   isBrowser: boolean;
+  showPassword: boolean = false; // Nueva propiedad para controlar la visibilidad
 
   constructor(
     private userService: UsuariosService,
@@ -31,6 +32,10 @@ export class LoginComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 
   ngOnInit() {

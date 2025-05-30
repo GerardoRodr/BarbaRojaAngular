@@ -33,11 +33,23 @@
               <label class="form-label" for="form3Example3">Correo</label>
             </div>
   
-            <!-- Password input -->
-            <div class="form-outline mb-3">
-              <input [(ngModel)]="credentials.pass" type="password" name="pass" id="form3Example4" class="form-control form-control-lg" placeholder="Ingrese su contraseña" required/>
-              <label class="form-label" for="form3Example4">Contraseña</label>
-            </div>
+          <!-- Password input con botón de visibilidad -->
+          <div class="form-outline mb-3 position-relative">
+            <input [(ngModel)]="credentials.pass" 
+                  [type]="showPassword ? 'text' : 'password'" 
+                  name="pass" 
+                  id="form3Example4" 
+                  class="form-control form-control-lg" 
+                  placeholder="Ingrese su contraseña" 
+                  required/>
+            <label class="form-label" for="form3Example4">Contraseña</label>
+            <button type="button" 
+                    class="btn btn-link position-absolute end-0 translate-middle-y"
+                    (click)="togglePasswordVisibility()"
+                    style="margin-right: 10px; top: 30%;">
+              <i class="bi" [class.bi-eye]="!showPassword" [class.bi-eye-slash]="showPassword"></i>
+            </button>
+          </div>
             
             <!-- reCAPTCHA v2 Checkbox -->
             <div class="recaptcha-container" id="recaptcha-container"></div>
