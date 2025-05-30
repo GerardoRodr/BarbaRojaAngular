@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   recaptchaResponse: string | null = null;
   isBrowser: boolean;
   showPassword: boolean = false; // Nueva propiedad para controlar la visibilidad
+  rememberMe: boolean = false; // Nueva propiedad para recordar contraseña
 
   constructor(
     private userService: UsuariosService,
@@ -32,6 +33,14 @@ export class LoginComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
+    
+    // Cargar credenciales guardadas si existen
+    if (this.isBrowser && localStorage.getItem('rememberedCredentials')) {
+      const savedCredentials = JSON.parse(localStorage.getItem('rememberedCredentials') || '{}');
+      this.credentials.correo = savedCredentials.correo || '';
+      this.credentials.pass = savedCredentials.pass || '';
+      this.rememberMe = true;
+    }
   }
 
   togglePasswordVisibility(): void {
@@ -79,11 +88,17 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    // Guardar credenciales si "Recordar contraseña" está marcado
+    if (this.rememberMe) {
+      localStorage.setItem('rememberedCredentials', JSON.stringify(this.credentials));
+    } else {
+      localStorage.removeItem('rememberedCredentials');
+    }
+
     this.loading = true;
     this.errorMessage = '';
     this.successMessage = '';
 
-    // Agregar el token de reCAPTCHA a las credenciales
     const credentialsWithRecaptcha = {
       ...this.credentials,
       recaptchaToken: this.recaptchaResponse
@@ -104,8 +119,9 @@ export class LoginComponent implements OnInit {
         } else {
           this.errorMessage = 'Error en el inicio de sesión';
         }
-        // Resetear el reCAPTCHA en caso de error
-        grecaptcha.reset();
+        if (typeof grecaptcha !== 'undefined') {
+          grecaptcha.reset();
+        }
         this.recaptchaResponse = null;
       }
     );
