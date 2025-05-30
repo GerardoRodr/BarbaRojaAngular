@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ReservasService {
-  private apiUrl = 'https://apibarbaroja.azurewebsites.net/api/v1/reservas';
+  private apiUrl = 'https://christian-binny-gerardorod-e1204fc0.koyeb.app/api/v1/reservas';
   //private apiUrl = 'http://localhost:8080/api/v1/reservas';
 
   constructor(private http: HttpClient) {}

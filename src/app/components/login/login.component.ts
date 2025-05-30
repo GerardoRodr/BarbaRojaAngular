@@ -13,7 +13,12 @@ import { UsuariosService } from '../../services/usuarios.service';
 })
 
 export class LoginComponent { // LA LOGICA DEL COMPONENTE
-  credentials = { correo: '', pass: '' };
+  credentials = 
+  { 
+    correo: '', 
+    pass: '' 
+  };
+  
   errorMessage: string = '';
   successMessage: string = '';
   usuario: any;
